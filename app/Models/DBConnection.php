@@ -12,6 +12,7 @@ class DBConnection
     {
         if (!isset(self::$instance)) {
             try {
+                require 'env.php';
                 self::$instance = new PDO("mysql:dbname=" . getenv("DBNAME") . ";host=" . getenv("HOST"), getenv("USER"), getenv("PASS"));
             } catch (Exception $e) {
                 echo 'Error: ' . $e;
