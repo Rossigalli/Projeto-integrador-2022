@@ -6,7 +6,9 @@ class Core
 
     public function __construct()
     {
-        $url = new Url(isset($_GET['pag']) ? $_GET['pag'] : '');
+        session_start();
+
+        $url = new UrlFactory(isset($_GET['pag']) ? $_GET['pag'] : '');
 
         $this->setController($url->getUrlClass());
 

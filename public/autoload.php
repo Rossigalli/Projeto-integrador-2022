@@ -5,7 +5,9 @@ spl_autoload_register(function ($fileName) {
         require('../app/Controllers/' . $fileName . '.php');
     } elseif (file_exists('../app/Core/' . $fileName . '.php')) {
         require('../app/Core/' . $fileName . '.php');
-    } elseif (file_exists('../app/Helpers/Classes/' . $fileName . '.php')) {
-        require('../app/Helpers/Classes/' . $fileName . '.php');
+    } elseif (file_exists('../app/Helpers/Factories/' . $fileName . '.php')) {
+        require('../app/Helpers/Factories/' . $fileName . '.php');
+    } elseif (file_exists('../app/Models/' . $fileName . '.php')) {
+        require('../app/Models/' . $fileName . '.php');
     }
 });

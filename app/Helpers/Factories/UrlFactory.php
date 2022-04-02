@@ -1,6 +1,6 @@
 <?php
 
-class Url
+class UrlFactory
 {
 
     private array $url;
@@ -36,7 +36,7 @@ class Url
 
     private function setUrlClass($url_)
     {
-        $this->urlClass = count($url_) > 0 ? $url_[0] . 'Controller' : 'homeController';
+        $this->urlClass = count($url_) > 0 ? $url_[0] . 'Controller' : 'HomeController';
     }
 
     public function getUrlClass()
@@ -46,7 +46,7 @@ class Url
 
     private function setUrlMethod($url_)
     {
-        $this->urlMethod = count($url_) > 1 ? $url_[1] : 'index';
+        $this->urlMethod = (count($url_) > 1) && ($url_[1] != '') ? $url_[1] : 'index';
     }
 
     public function getUrlMethod()
