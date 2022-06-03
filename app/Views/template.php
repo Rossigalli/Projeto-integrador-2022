@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <base href="http://127.0.0.1/Projeto-integrador-2022/public/">
+    <base href="/Projeto-integrador-2022/public/">
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/template.css">

@@ -9,10 +9,11 @@ header {
     padding: 0 40px;
     box-sizing: border-box;
     background-color: #6e0707;
-    /* #5a0202
-    #3a3b3d
-    #aa2727
-    */
+    background-image: url('../img/logo_branco.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-origin: content-box;
 }
 #header_acronym {
     flex-grow: 1;
@@ -30,8 +31,3 @@ header {
     color: #e4e4e4;
 }
 
-#header_logo-fatec {
-    max-width: 100px;
-    position: absolute;
-    right: 40px;
-}

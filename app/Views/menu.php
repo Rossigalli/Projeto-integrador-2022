@@ -7,7 +7,7 @@ new MenuFactory(
             MenuFactory::newProfileButton($_SESSION['fullName']),
             MenuFactory::newGenericButton('index', 'fa-solid fa-archway', 'Início'),
             MenuFactory::newDropdownButton('dashboard', 'fa-solid fa-gauge-simple', 'Dashboard', array(
-                MenuFactory::newGenericButton('index', 'fa-solid fa-user-gear', 'Usuários')
+                MenuFactory::newGenericButton('users', 'fa-solid fa-user-gear', 'Usuários'),
             )),
             MenuFactory::newGenericButton('login/logout', 'fa-solid fa-right-from-bracket', 'Sair')
         )

@@ -7,11 +7,12 @@ class Users
     private $conn;
     private $email;
     private $pass;
+    private static $activeUser;
 
-    public function __construct($email_, $pass_)
+    private function __construct($email_, $pass_)
     {
-        $this->email = $email_;
-        $this->pass = $pass_;
+        $this->setEmail($email_);
+        $this->setPass($pass_);
 
         $this->conn = DBConnection::getConnection();
         if ($this->isAValidUser()) {
@@ -20,9 +21,19 @@ class Users
             $_SESSION['fullName'] = $this->getFullName();
             $_SESSION['email'] = $this->getEmail();
 
-            header('Location: http://127.0.0.1/Projeto-integrador-2022/index');
+            header('Location: /Projeto-integrador-2022/index');
             exit;
+        } else {
+            self::$activeUser = "";
         }
+    }
+
+    public static function newActiveUser($email_ = '', $pass_ = '')
+    {
+        if (!self::$activeUser) {
+            self::$activeUser = new Users($email_, $pass_);
+        }
+        return self::$activeUser;
     }
 
     public function isAValidUser()
@@ -39,6 +50,15 @@ class Users
 
         return false;
     }
+
+    public static function isAnActiveSession()
+    {
+        if (isset($_SESSION['userId'])) {
+            return true;
+        }
+        return false;
+    }
+
     public function getId()
     {
         $query = $this->conn->prepare('SELECT `id` FROM `users` WHERE `email` = :email AND `pass` = :pass');
@@ -50,16 +70,16 @@ class Users
         return $query->fetch(PDO::FETCH_ASSOC)['id'];
     }
 
-    private function setEmail($email_)
+    public function setEmail($email_)
     {
-        //
+        $this->email = $email_;
     }
     public function getEmail()
     {
         return $this->email;
     }
 
-    private function setFullName($fullName_)
+    public function setFullName($fullName_)
     {
         //
     }
@@ -75,20 +95,40 @@ class Users
         return $query->fetch(PDO::FETCH_ASSOC)['full_name'];
     }
 
-    private function setPass($pass_)
+    public function setPass($pass_)
     {
-        //
+        $this->pass = $pass_;
     }
     public function getPass()
     {
         return $this->pass;
     }
 
-    public static function isAnActiveSession()
+    public function getUsersBetween($min_, $max_)
     {
-        if (isset($_SESSION['userId'])) {
-            return true;
+        $query = $this->conn->prepare('SELECT `id`, `full_name`, `email` FROM `users` LIMIT :min, :max');
+        $query->bindParam(':min', $min_, PDO::PARAM_INT);
+        $query->bindParam(':max', $max_, PDO::PARAM_INT);
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function createNewUser($name_, $email_)
+    {
+        if ($name_ != '' && $email_ != '') {
+            $query = $this->conn->prepare('INSERT INTO `users` (`full_name`, `email`) VALUES (:name, :email)');
+            $query->execute(array(
+                'name' => $name_,
+                'email' => $email_
+            ));
         }
-        return false;
+    }
+    public function deleteUser($id_)
+    {
+        $query = $this->conn->prepare('DELETE FROM `users` WHERE `id` = :id');
+        $query->execute(array(
+            'id' => $id_
+        ));
     }
 }

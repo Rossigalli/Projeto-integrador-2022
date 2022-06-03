@@ -1,5 +1,5 @@
 <?php
-
+require_once '../app/Models/Users.php';
 class LoginController extends Controller
 {
 
@@ -17,13 +17,13 @@ class LoginController extends Controller
     {
         session_destroy();
 
-        header('Location: http://127.0.0.1/Projeto-integrador-2022/index');
+        header('Location: /Projeto-integrador-2022/index');
     }
 
     public function auth()
     {
         $email = isset($_POST['email']) ? $_POST['email'] : '';
         $password = isset($_POST['password']) ? $_POST['password'] : '';
-        new Users($email, $password);
+        Users::newActiveUser($email, $password);
     }
 }

@@ -21,12 +21,12 @@ class Controller
     public function loadTemplate($view_, $content_ = array())
     {
         $this->setContent($content_);
-        require '../app/Views/template.php';
+        require_once '../app/Views/template.php';
     }
 
     public function loadView($view_, $content_ = array())
     {
         extract($content_);
-        require '../app/Views/' . $view_ . '.php';
+        require_once '../app/Views/' . $view_ . '.php';
     }
 }
