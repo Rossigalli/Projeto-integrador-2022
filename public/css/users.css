@@ -117,6 +117,9 @@ tr:nth-child(odd){
 #card_new-user.new-user-active{
     display: flex;
 }
+#Level{
+    width: 100%;
+}
 
 .card_close-btn{
     position: absolute;

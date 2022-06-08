@@ -20,6 +20,7 @@ class Users
             $_SESSION['userId'] = $this->getId();
             $_SESSION['fullName'] = $this->getFullName();
             $_SESSION['email'] = $this->getEmail();
+            $_SESSION['level'] = $this->getLevel();
 
             header('Location: /Projeto-integrador-2022/index');
             exit;
@@ -57,6 +58,16 @@ class Users
             return true;
         }
         return false;
+    }
+
+    public function getLevel()
+    {
+        $query = $this->conn->prepare('SELECT `user_level` FROM `users` WHERE `id` = :id');
+        $query->execute(array(
+            ':id' => $this->getId(),
+        ));
+
+        return $query->fetch(PDO::FETCH_ASSOC)['user_level'];
     }
 
     public function getId()
@@ -106,7 +117,7 @@ class Users
 
     public function getUsersBetween($min_, $max_)
     {
-        $query = $this->conn->prepare('SELECT `id`, `full_name`, `email` FROM `users` LIMIT :min, :max');
+        $query = $this->conn->prepare('SELECT `id`, `full_name`, `email`, `user_level` FROM `users` LIMIT :min, :max');
         $query->bindParam(':min', $min_, PDO::PARAM_INT);
         $query->bindParam(':max', $max_, PDO::PARAM_INT);
         $query->execute();
@@ -114,13 +125,14 @@ class Users
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function createNewUser($name_, $email_)
+    public function createNewUser($name_, $email_, $level_)
     {
         if ($name_ != '' && $email_ != '') {
-            $query = $this->conn->prepare('INSERT INTO `users` (`full_name`, `email`) VALUES (:name, :email)');
+            $query = $this->conn->prepare('INSERT INTO `users` (`full_name`, `email`, `user_level`) VALUES (:name, :email, :level)');
             $query->execute(array(
-                'name' => $name_,
-                'email' => $email_
+                '?name' => $name_,
+                ':email' => $email_,
+                ':level' => $level_
             ));
         }
     }
