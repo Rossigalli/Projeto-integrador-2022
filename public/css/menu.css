@@ -54,10 +54,14 @@ li:hover .list .item_icon{
 
 .item_icon{
     min-width: 30px;
+    height: 20px;
     text-align: center;
     margin-right: 10px;
 }
-
+.profile_icon{
+    width: 50px;
+    margin-right: 10px;
+}
 .item_dropdown{
     height: 50px;
     display: flex;

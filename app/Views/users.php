@@ -7,7 +7,7 @@
         <th>Nome</th>
         <th>Email</th>
         <th>Nível</th>
-        <th id="th_new-user"><i id="btn_new-user" class="fa-solid fa-plus" onclick="showFormNewUser()"></i></th>
+        <th id="th_new-user"><img id="btn_new-user" src="./img/icons/plus-solid.svg" onclick="showFormNewUser()"></th>
     </tr>
     <?php
     for ($i = 0; $i < count($this->content); $i++) {
@@ -17,8 +17,8 @@
             <td>' . $this->content[$i]['email'] . '</td>
             <td>' .  $this->content[$i]['user_level']  . '</td>
             <td class="table_actions">
-                <a href=""><div class="table_btn btn_edit"><i class="fa-solid fa-pencil"></i></div>
-                <a onclick="confirmAction(' . $this->content[$i]["id"] . ')"><div class="table_btn btn_delete"><i class="fa-solid fa-trash-can"></i></div>
+                <a href=""><div class="table_btn btn_edit"><img src="./img/icons/pen-solid.svg"></div>
+                <a onclick="confirmAction(' . $this->content[$i]["id"] . ')"><div class="table_btn btn_delete"><img src="./img/icons/trash-can-solid.svg"></div>
             </td>
         </tr>';
     }
@@ -32,9 +32,9 @@
         <select name="level" id="Level">
             <?php
 
-            echo $_SESSION['level'] == 'S' ? '<option value="S">Suporte</option>' : '';
-            echo '<option value="A">Administrador</option>
-                  <option value="T">Técnico</option>';
+            echo $_SESSION['level'] == 'Suporte' ? '<option value="Suporte">Suporte</option>' : '';
+            echo '<option value="Administrador">Administrador</option>
+                  <option value="Técnico">Técnico</option>';
             ?>
         </select>
         <input class="input_new-user" type="password" name="pass" placeholder="Senha"></input>

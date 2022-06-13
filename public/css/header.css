@@ -30,4 +30,6 @@ header {
     font-size: 1.2rem;
     color: #e4e4e4;
 }
-
+.bars{
+    height: 20px;
+}

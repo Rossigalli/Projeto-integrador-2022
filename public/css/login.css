@@ -22,20 +22,19 @@
     text-align: left;
     border-bottom: 2px solid #b8b8b8;
     margin: auto;
+    display: flex;
 }
 
-#login-container label i {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    color: #000000;
-    font-size: 1.3rem;
+#login-container label img {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    margin-right: 10px;
 }
 
 #login-container label input {
     width: auto;
-    height: 30px;
+    height: auto;
     border: 0;
     outline: none;
     background-color: #e0e0e0;

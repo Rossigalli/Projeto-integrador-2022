@@ -6,7 +6,7 @@ class UsersController extends Controller
 
     public function index()
     {
-        if (Users::isAnActiveSession() && ($_SESSION['level'] == 'S' or $_SESSION['level'] == 'A')) {
+        if (Users::isAnActiveSession() && ($_SESSION['level'] == 'Suporte' or $_SESSION['level'] == 'Administrador')) {
             $authenticatedUser = Users::newActiveUser();
 
             $content = $authenticatedUser->getUsersBetween(0, 10);

@@ -11,6 +11,9 @@ th, td{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+tr{
+    height: 25px;
+}
 th{
     background-color: #6e0707;
     color: #e4e4e4;
@@ -20,21 +23,15 @@ tr:nth-child(odd){
     background-color: #e4e4e4;
 }
 .table_actions{
-    max-width: max-content;
-    text-align: right;
-    text-overflow: clip;
+    text-align: end;
 }
-
 .table_btn{
-    min-width: max-content;
-    height: 25px;
+    display: inline-flex;
+    width: 15px;
+    height: 15px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 4px;
-    display: inline-flex;
-    align-items: center;
-    padding: 0 10px;
-    color: #e4e4e4;
-    font-size: 0.8rem;
     justify-content: center;
 }
 
@@ -53,22 +50,23 @@ tr:nth-child(odd){
 }
 
 #th_new-user{
-    text-align: right;
+    display: flex;
+    justify-content: end;
+    height: 27px;
 }
 
 #btn_new-user{
-    padding: 0px 10px;
     cursor: pointer;
-    color: white;
+    width: 20px;
 }
 
 #btn_new-user:hover{
-    font-size: 1.2rem;
+    width: 25px;
 }
 
 .input_new-user{
     width: 200px;
-     border: none;
+    border: none;
     background-color: #cecece;
 }
 

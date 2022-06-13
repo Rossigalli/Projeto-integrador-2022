@@ -18,7 +18,7 @@ class MenuFactory
         return '
         <li class="list_item">
             <a class="item_link" href="' . $href_ . '">
-                <i class="item_icon ' . $icon_ . '"></i>
+                <img src="./img/icons/' . $icon_ . '.svg" class="item_icon">
                 ' . $value_ . '
             </a>
         </li>
@@ -30,7 +30,7 @@ class MenuFactory
         return '
         <li id="list_item-profile">
             <a class="item_link" href="#">
-                <i id="icon-profile" class="fa-solid fa-circle-user"></i>
+                <img src="./img/icons/circle-user-solid.svg" class="profile_icon">
                 <span>
                     <p>Bem-vindo</p>
                     <p id="profile-name">' . explode(' ', $userName_)[0] . '</p>
@@ -45,7 +45,7 @@ class MenuFactory
         return '
         <li>
             <div class="list_item item_dropdown">
-            <i class="item_icon ' . $icon_ . '"></i>
+            <img src="./img/icons/' . $icon_ . '.svg" class="item_icon">
             ' . $value_ . '
             <i class="dropdown-arrow fa-solid fa-chevron-left"></i>
             </div>
